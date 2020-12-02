@@ -1,0 +1,15 @@
+.Movie-wrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    box-shadow: 0px 1px 10px #a5a5a5;
+    margin-bottom: 20px;
+}
+
+.Movie-info {
+    padding: 15px;
+}
+
+.Movie-synopsis {
+    padding: 15px;
+}

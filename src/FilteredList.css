@@ -1,0 +1,20 @@
+.List-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.Search {
+  text-align: left;
+  padding: 10px;
+  width: 25%;
+}
+
+.Movies {
+    padding: 10px;
+    width: 75%;
+}
+
+.Marathon {
+    padding: 10px;
+    width: 35%;
+  }
