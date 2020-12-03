@@ -1,0 +1,35 @@
+.Flex-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    align-items: center;
+}
+
+.Search-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.All-button {
+    border: 0px;
+    background-color: transparent;
+    font-weight: 600;
+    color: #007c8f;
+}
+
+.All-button:hover {
+    color: #17a2b8;
+    text-decoration: underline;
+}
+
+.All-button:focus {
+    outline: none; 
+    border: none;
+}
+
+.Search-section {
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}

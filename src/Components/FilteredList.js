@@ -2,7 +2,7 @@ import React from 'react';
 import DisplayList from './DisplayList.js';
 import SearchCriteria from './SearchCriteria.js';
 import DisplayMarathon from './DisplayMarathon.js';
-import './FilteredList.css';
+import '../style/FilteredList.css';
 
 export default class FilteredList extends React.Component {
     constructor() {
@@ -15,6 +15,7 @@ export default class FilteredList extends React.Component {
                 "English": false, 
                 "Foreign": false, 
             },
+            numLangsChecked: 0,
             genreAll: true,
             genre: {
                 "Action": false, 
@@ -31,24 +32,58 @@ export default class FilteredList extends React.Component {
                 "Thriller": false, 
                 "War": false
             }, 
+            numGenresChecked: 0,
             marathonMovies: [],
             totalTime: 0
         };
     }
     onCheckFilterGenre = (event) => {
         let genreCopy = {...this.state.genre};
+        let numChecked;
+        if (genreCopy[event.target.value]) {
+            numChecked = this.state.numGenresChecked - 1;
+        } else {
+            numChecked = this.state.numGenresChecked + 1;
+        }
         genreCopy[event.target.value] = !genreCopy[event.target.value];
         this.setState({
-            genreAll: false,
-            genre: genreCopy
+            genreAll: (numChecked !== 0) ? false : true,
+            genre: (numChecked !== 0) ? genreCopy : 
+            {
+                "Action": false, 
+                "Adventure": false, 
+                "Animation": false, 
+                "Biography": false, 
+                "Comedy": false, 
+                "Drama": false, 
+                "Horror": false, 
+                "Music": false, 
+                "Mystery": false, 
+                "Romance": false, 
+                "Sci-Fi": false, 
+                "Thriller": false, 
+                "War": false
+            },
+            numGenresChecked: numChecked
         })
     }
     onCheckFilterLanguage = (event) => {
         let languageCopy = {...this.state.language};
+        let numChecked;
+        if (languageCopy[event.target.value]) {
+            numChecked = this.state.numLangsChecked - 1;
+        } else {
+            numChecked = this.state.numLangsChecked + 1;
+        }
         languageCopy[event.target.value] = !languageCopy[event.target.value];
         this.setState({
-            languageAll: false,
-            language: languageCopy
+            languageAll: (numChecked !== 0) ? false : true,
+            language: (numChecked !== 0) ? languageCopy : 
+            {
+                "English": false, 
+                "Foreign": false, 
+            },
+            numLangsChecked: numChecked
         })    
     }
     matchesFilter = (item) => {
@@ -135,15 +170,26 @@ export default class FilteredList extends React.Component {
     render() {
         const {movieList} = this.props;
         return (
-            <div className="List-wrapper">
-                <div className="Search">
-                    <SearchCriteria sortRadioButtonChange={this.onCheckSortBy} genreCheckboxChange={this.onCheckFilterGenre} languageCheckboxChange={this.onCheckFilterLanguage} setAllLanguages={this.setAllLanguages} setAllGenres={this.setAllGenres} languageChecks={this.state.language} genreChecks={this.state.genre}/>
-                </div>
-                <div className="Movies">
-                    <DisplayList list={movieList.filter(this.matchesFilter).sort(this.sortByCriteria)} addMovie={this.addMovie}/>
-                </div>
-                <div className="Marathon">
-                    <DisplayMarathon list={this.state.marathonMovies} removeMovie={this.removeMovie} totalTime={this.state.totalTime}/>
+            <div>
+                <div className="List-wrapper">
+                    <div className="Search">
+                        <div className= "Section-title">Search for Movies</div>
+                        <div className="Flex-row">
+                            <div className="Settings">
+                                <SearchCriteria sortRadioButtonChange={this.onCheckSortBy} genreCheckboxChange={this.onCheckFilterGenre} languageCheckboxChange={this.onCheckFilterLanguage} setAllLanguages={this.setAllLanguages} setAllGenres={this.setAllGenres} languageChecks={this.state.language} genreChecks={this.state.genre}/>
+                            </div>
+                            <div className="Movies">
+                                <DisplayList list={movieList.filter(this.matchesFilter).sort(this.sortByCriteria)} addMovie={this.addMovie}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="Marathon">
+                        <div className= "Section-title">Your Movies</div>
+                        <div className="Marathon-box">
+                            <DisplayMarathon list={this.state.marathonMovies} removeMovie={this.removeMovie} totalTime={this.state.totalTime}/>
+                            { (this.state.marathonMovies.length === 0) ? <div>You haven't selected any movies.</div> : null}
+                        </div>
+                    </div>
                 </div>
             </div>
         );

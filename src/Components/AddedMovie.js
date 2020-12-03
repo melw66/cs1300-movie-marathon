@@ -1,6 +1,8 @@
-import './AddedMovie.css';
+import '../style/AddedMovie.css';
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import {BsClockFill} from "react-icons/bs";
 
 export default class AddedMovie extends React.Component {
     getLengthString = (length) => {
@@ -20,22 +22,22 @@ export default class AddedMovie extends React.Component {
         const nameWithYear = movieInfo.name + " (" + movieInfo.year.toString() + ")";
         const imageAltTitle = movieInfo.name + " movie poster";
         const genreString = this.getGenreString(movieInfo.genre);
-        const directorString = "Directed by: " + movieInfo.director;
-        const lengthString = "Length: " + this.getLengthString(movieInfo.duration);
+        const lengthString = this.getLengthString(movieInfo.duration);
         return (
-        // <div style={divstyle} onClick={() => updateCart(id)}>
         <div className="Movie-wrapper">
-            <div className="Movie-info">
-                <h2>{nameWithYear}</h2>
-                <img src={movieInfo.image} alt={imageAltTitle}/>
-                <p>{directorString}</p>
-                <p>{lengthString}</p>
+            <div className="Added-movie-info">
+                <img src={movieInfo.image} alt={imageAltTitle} className="Movie-poster-small"/>
             </div>
-            <div className="Movie-synopsis">
-                <p>{movieInfo.rating}</p>
-                <p>{genreString}</p>
-                <p>{movieInfo.synopsis}</p>
-                <Button variant="primary" size="sm" onClick={() => removeMovie(movieInfo)}>Remove Movie</Button>
+            <div className="Added-movie-synopsis">
+                <h2 className="Added-movie-title">{nameWithYear}</h2>
+                <div className="Added-genres">{genreString}</div>
+                <div className="Tags-vertical">
+                    <div className="Tag">
+                        <div className="Tag-text">{lengthString}</div>
+                        <BsClockFill color='#007bff' className="Tag-icon"/>
+                    </div>
+                </div>
+                <Button variant="info" size="sm" onClick={() => removeMovie(movieInfo)}>Remove Movie</Button>
             </div>
         </div>
         );

@@ -1,5 +1,6 @@
 import React from 'react';
 import AddedMovie from './AddedMovie.js';
+import '../style/AddedMovie.css';
 
 export default class DisplayMarathon extends React.Component {
     minutesToString(length) {
@@ -11,8 +12,8 @@ export default class DisplayMarathon extends React.Component {
         const {list, removeMovie, totalTime} = this.props;
         return (
             <div>
+                <div className="Time-accumulator">Total Time: {this.minutesToString(totalTime)}</div>
                 {list.map(item => <AddedMovie movieInfo={item} removeMovie={removeMovie}/>)}
-                Total Time: {this.minutesToString(totalTime)}
             </div>
         );
     }

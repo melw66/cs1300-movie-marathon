@@ -1,0 +1,76 @@
+.Movie-wrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: 1px solid #dfdfdf;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.Movie-info {
+    padding: 15px;
+    width: 22%;
+}
+
+.Movie-synopsis {
+    padding: 15px;
+    width: 78%;
+}
+
+.Tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    border-radius: 30px;
+    border: 1px solid #dfdfdf;
+    width: fit-content;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.Tag-text {
+    margin-right: 6px;
+    margin-left: 18px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.Tags-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.Tag-icon {
+    margin-right: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.Genres {
+    font-size: 16px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.Synopsis {
+    text-align: left;
+}
+
+.Movie-poster {
+    width: 120px;
+}
+
+.Movie-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.Movie-button {
+    margin-top: 20px;
+}
