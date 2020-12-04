@@ -1,6 +1,29 @@
 # Movie Marathon Application
 
-s
+## Code Structure
+
+All components, style sheets, and movie data are in the src folder. Style sheets are located in the style folder within src.
+
+MovieData.js holds an object for all the movie data in the app, which is imported by App.js, the main App component of the app.
+The other nested components are in the Components folder in src.
+
+## Components
+
+### FilteredList
+
+sdf
+
+### SearchCriteria
+
+### DisplayList
+
+### MovieItem
+
+### DisplayMarathon
+
+### AddedMovie
+
+sdf
 
 # React App Set-Up
 
