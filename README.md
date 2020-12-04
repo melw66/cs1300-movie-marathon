@@ -4,6 +4,8 @@
 
 All components, style sheets, and movie data are in the src folder. Style sheets are located in the style folder within src.
 
+All movie images are in the img folder in public.
+
 MovieData.js holds an object for all the movie data in the app, which is imported by App.js, the main App component of the app.
 The other nested components are in the Components folder in src.
 
@@ -11,19 +13,27 @@ The other nested components are in the Components folder in src.
 
 ### FilteredList
 
-sdf
+This is the main "parent component", which contains the components SearchCriteria, DisplayList, and DisplayMarathon, the 3 components that display the main content of the app. In its state, FilteredList keeps track of the selected sort criteria, whether the filters for language and genre are selected as "show all", whether each filter value is selected or not, and the list of movies the user has selected, as well as the total time in minutes of those selected movies.
 
 ### SearchCriteria
 
+This component contains all the radio buttons and checkboxes for the sort/filter criteria of browsing through the movies.
+
 ### DisplayList
+
+This component displays each movie in the filtered and sorted list as MovieItem components with the map() function.
 
 ### MovieItem
 
+This component defines how a movie and its information are displayed as a card in the filtered and sorted movie list.
+
 ### DisplayMarathon
+
+This component displays each movie in the movie marathon list as AddMovie components with the map() function.
 
 ### AddedMovie
 
-sdf
+This component defines how a movie and its information are displayed as a card in user's chosen movie marathon list.
 
 # React App Set-Up
 
