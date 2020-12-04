@@ -17,7 +17,7 @@ export default class DisplayMarathon extends React.Component {
         return (
             <div>
                 <div className="Time-accumulator">Total Time: {this.minutesToString(totalTime)}</div>
-                {list.map(item => <AddedMovie movieInfo={item} removeMovie={removeMovie}/>)}
+                {list.map(item => <AddedMovie movieInfo={item} removeMovie={removeMovie} key={"addedMovie-" + item.id}/>)}
             </div>
         );
     }
