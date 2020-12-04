@@ -8,7 +8,8 @@ export default class DisplayList extends React.Component {
         const {list, addMovie} = this.props;
         return (
             <div>
-                {list.map(item => <MovieItem movieInfo={item} addMovie={addMovie} key={"movie-" + item.id}/>)}
+                {(list.length === 0) ? <div> No movies match your criteria. </div> :
+                list.map(item => <MovieItem movieInfo={item} addMovie={addMovie} key={"movie-" + item.id}/>)}
             </div>
         );
     }
