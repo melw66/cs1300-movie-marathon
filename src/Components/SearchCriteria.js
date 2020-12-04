@@ -3,8 +3,10 @@ import Form from 'react-bootstrap/Form';
 import { BsChevronLeft } from "react-icons/bs";
 import '../style/SearchCriteria.css';
 
+// Component that holds all the radio buttons and checkboxes of the filter/sort criteria
 export default class SearchCriteria extends React.Component {
     render() {
+        // takes in callback functions when the radio buttons / checkboxes change, as well as the state of whether a radio button or checkbox should be selected or not
         const {sortRadioButtonChange, genreCheckboxChange, languageCheckboxChange, setAllLanguages, setAllGenres, languageChecks, genreChecks} = this.props;
         return (
             <div>

@@ -2,6 +2,7 @@ import './style/App.css';
 import FilteredList from './Components/FilteredList.js';
 import movieList from './MovieData';
 
+// Component that holds the site title, information, and main component, FilteredList
 function App() {
   return (
     <div className="App">

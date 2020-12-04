@@ -4,9 +4,11 @@ import SearchCriteria from './SearchCriteria.js';
 import DisplayMarathon from './DisplayMarathon.js';
 import '../style/FilteredList.css';
 
+// Component that wraps the sort/filter criteria, filtered movies, and user's selected movies
 export default class FilteredList extends React.Component {
     constructor() {
         super();
+        // state keeps track of sort/filter related states, and the user's selected movies with their total time
         this.state = {
             sortBy: "Rating",
             sortOrder: "High to Low",
@@ -37,6 +39,7 @@ export default class FilteredList extends React.Component {
             totalTime: 0
         };
     }
+    // called when the user clicks on a genre filter checkbox
     onCheckFilterGenre = (event) => {
         let genreCopy = {...this.state.genre};
         let numChecked;
@@ -67,6 +70,7 @@ export default class FilteredList extends React.Component {
             numGenresChecked: numChecked
         })
     }
+    // called when the user clicks on a language filter checkbox
     onCheckFilterLanguage = (event) => {
         let languageCopy = {...this.state.language};
         let numChecked;
@@ -86,6 +90,7 @@ export default class FilteredList extends React.Component {
             numLangsChecked: numChecked
         })    
     }
+    // function passed to filter() function, which accepts movies fitting the selected filter criteria for language and genre
     matchesFilter = (item) => {
         if (!this.state.languageAll) {
             if (!this.state.language[item.language]) { 
@@ -102,6 +107,7 @@ export default class FilteredList extends React.Component {
         }
         return true;
     }
+    // called when the user selects a sort criteria radio button
     onCheckSortBy = (event) => {
         const splitString = event.target.value.split(',');
         this.setState({
@@ -109,6 +115,7 @@ export default class FilteredList extends React.Component {
             sortOrder: splitString[1].substring(1)
         })
     }
+    // function passed to sort() function, which orders items based on the chosen sort criteria
     sortByCriteria = (a, b) => {
         let itemA = (this.state.sortBy === "Rating") ? a.rating : a.year;
         let itemB = (this.state.sortBy === "Rating") ? b.rating : b.year;
@@ -117,6 +124,7 @@ export default class FilteredList extends React.Component {
         }
         return itemB - itemA;
     }
+    // called when the user clicks on a movie's "Add to Movie Marathon" button
     addMovie = (movieInfo) => {
         for (let i = 0; i < this.state.marathonMovies.length; i++) {
             if (movieInfo.id === this.state.marathonMovies[i].id) {
@@ -129,6 +137,7 @@ export default class FilteredList extends React.Component {
             totalTime: newTotalTime
         })
     }
+    // called when the user clicks on a chosen movie's "Remove Movie" button
     removeMovie = (movieInfo) => {
         let marathonMovies = [...this.state.marathonMovies];
         marathonMovies = marathonMovies.filter((item) => item.id !== movieInfo.id);
@@ -138,6 +147,7 @@ export default class FilteredList extends React.Component {
             totalTime: newTotalTime
         })
     }
+    // called when the user clicks on "All Languages" to go back to the default for languages
     setAllLanguages = () => {
         this.setState({
             languageAll: true,
@@ -147,6 +157,7 @@ export default class FilteredList extends React.Component {
             }
         })
     }
+    // called when the user clicks on "All Genres" to go back to the default for genres
     setAllGenres = () => {
         this.setState({
             genreAll: true,
@@ -168,6 +179,7 @@ export default class FilteredList extends React.Component {
         })
     }
     render() {
+        // gets the app's total movie list as a prop
         const {movieList} = this.props;
         return (
             <div>
