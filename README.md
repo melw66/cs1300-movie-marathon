@@ -27,6 +27,8 @@ This component displays each movie in the filtered and sorted list as MovieItem 
 
 This component defines how a movie and its information are displayed as a card in the filtered and sorted movie list.
 
+MovieItem takes in movieInfo and addMovie() as props. movieInfo is the object that holds the information for the specific movie to be displayed. addMovie() is the callback function that will be called when the user clicks on the "Add to Movie Marathon" button in the MovieItem component. This function is defined in FilteredList, which changes the movie marathon list and corresponding total time stored in its state (only if that movie isn't already in the movie marathon list), which results in the page rerendering so that a new AddedMovie component is now being displayed and the total time is updated to include that movie. This is because DisplayMarathon takes in a list of movies that is the movie marathon list in FilteredList's state, as well as the total time in FilteredList's state.
+
 ### DisplayMarathon
 
 This component displays each movie in the movie marathon list as AddMovie components with the map() function.
@@ -35,7 +37,7 @@ This component displays each movie in the movie marathon list as AddMovie compon
 
 This component defines how a movie and its information are displayed as a card in user's chosen movie marathon list.
 
-AddedMovie takes in movieInfo and removeMovie() as props. movieInfo is the object that holds the information to be displayed. removeMovie() is the callback function that will be called when the user clicks on the "Remove Movie" button in the AddedMovie component. This function is defined in FilteredList, which changes the movie marathon list and corresponding total time stored in its state, which results in the page rerendering to remove that AddedMovie component so that it is no longer displayed. This is because DisplayMarathon takes in a list of movies that is the movie marathon list in FilteredList's state.
+AddedMovie takes in movieInfo and removeMovie() as props. movieInfo is the object that holds the information for the specific movie to be displayed. removeMovie() is the callback function that will be called when the user clicks on the "Remove Movie" button in the AddedMovie component. This function is defined in FilteredList, which changes the movie marathon list and corresponding total time stored in its state, which results in the page rerendering so that AddedMovie component is no longer displayed and the total time is updated. This is because DisplayMarathon takes in a list of movies that is the movie marathon list in FilteredList's state, as well as the total time in FilteredList's state.
 
 # React App Set-Up
 
