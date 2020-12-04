@@ -35,6 +35,8 @@ This component displays each movie in the movie marathon list as AddMovie compon
 
 This component defines how a movie and its information are displayed as a card in user's chosen movie marathon list.
 
+AddedMovie takes in movieInfo and removeMovie() as props. movieInfo is the object that holds the information to be displayed. removeMovie() is the callback function that will be called when the user clicks on the "Remove Movie" button in the AddedMovie component. This function is defined in FilteredList, which changes the movie marathon list and corresponding total time stored in its state, which results in the page rerendering to remove that AddedMovie component so that it is no longer displayed. This is because DisplayMarathon takes in a list of movies that is the movie marathon list in FilteredList's state.
+
 # React App Set-Up
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
